@@ -1,10 +1,20 @@
 class PeopleController < ApplicationController
-    def index
-    render json: @people
+  def index
+    @people = Person.all
   end
 
   def show
     render json: @person.id
+  end
+
+  def create
+    @people = Person.new(person_params)
+
+    if @person.save
+      render json: @person
+    else
+      render json: @person.errors, status: :unprocessable_entity
+    end
   end
 
   private
@@ -15,6 +25,10 @@ class PeopleController < ApplicationController
     else
       Person.all
     end
+  end
+
+  def person_params
+    params.require(:person).permit(:name, :email, :avatar)
   end
 
 
