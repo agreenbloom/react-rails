@@ -4,7 +4,8 @@ class PeopleController < ApplicationController
   end
 
   def show
-    render json: @person.id
+    @people = Person.find(params[:id])
+    render json: @person
   end
 
   def create
