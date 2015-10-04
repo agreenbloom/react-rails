@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
   get 'records/index'
 
-  resources :users
-  resources :records
+  resources :users do
+    resources :records
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

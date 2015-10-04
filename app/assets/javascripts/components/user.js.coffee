@@ -18,9 +18,9 @@
   handleEdit: (e) ->
     e.preventDefault()
     data =
-      title: React.findDOMNode(@refs.name).value
-      date: React.findDOMNode(@refs.email).value
-      amount: React.findDOMNode(@refs.description).value
+      name: React.findDOMNode(@refs.name).value
+      email: React.findDOMNode(@refs.email).value
+      description: React.findDOMNode(@refs.description).value
     $.ajax
       method: 'PUT'
       url: "/users/#{ @props.user.id }"
